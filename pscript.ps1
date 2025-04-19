@@ -7,6 +7,7 @@ Foreach ($x in $hosts) {
 $hostname= icm -ComputerName $x -cred $cred -SessionOption (New-PSSessionOption -NoMachineProfile) -ScriptBlock {hostname}
 write-host "IP:$($x) Hostname:$hostname"
 icm -ComputerName $x -cred $cred -SessionOption (New-PSSessionOption -NoMachineProfile) -ScriptBlock $ScriptBlock |export-csv -Path $filename-$hostname.csv
+Write-host "--------------------------------------------------------------------------"
 }
 
 
